@@ -7,11 +7,12 @@ import org.springframework.web.multipart.MultipartFile;
 import sshukla.executor.entity.User;
 import sshukla.executor.repo.UserRepository;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
 
 /**
  * @author 'Seemant Shukla' on '28/10/2022'
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Async
-    public CompletableFuture<List<User>> saveUser(MultipartFile multipartFile) {
+    public CompletableFuture<List<User>> saveUsers(MultipartFile multipartFile) {
         long startTime = System.currentTimeMillis();
         //Utility Method to parse CSV
         List<User> userList = parseUserCSVFile(multipartFile);
